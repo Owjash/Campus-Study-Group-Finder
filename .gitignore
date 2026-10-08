@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Local database
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Frontend
+node_modules/
+dist/
+
+# Secrets and Mac files
+.env
+.env.*
+!.env.example
+.DS_Store

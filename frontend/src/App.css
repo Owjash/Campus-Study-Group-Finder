@@ -1,0 +1,99 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.session-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.session-card {
+  background: white;
+  border: 1px solid #dbe2ea;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.session-card h2 {
+  margin-top: 0;
+  color: #175cd3;
+}
+.create-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #dbe2ea;
+  border-radius: 12px;
+}
+
+.create-form h2 {
+  margin: 0;
+}
+
+.create-form label {
+  display: grid;
+  gap: 6px;
+  font-weight: bold;
+}
+
+.create-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #b8c4d4;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.create-form button {
+  padding: 12px;
+  background: #175cd3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.create-form button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.search-field {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+  font-weight: bold;
+}
+
+.search-field input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #b8c4d4;
+  border-radius: 6px;
+  font: inherit;
+}
+.session-card button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: #175cd3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.session-card button:hover:not(:disabled) {
+  background: #1249a8;
+}
+
+.session-card button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
