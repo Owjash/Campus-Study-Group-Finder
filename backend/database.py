@@ -55,8 +55,30 @@ def initialize_database():
                     REFERENCES study_sessions(id) ON DELETE CASCADE
             )
         """)
+def initialize_login_sessions():
+    with get_connection() as connection:
+        connection.execute("""
+            CREATE TABLE IF NOT EXISTS login_sessions (
+                token_hash TEXT PRIMARY KEY,
+                student_id INTEGER NOT NULL,
+                expires_at INTEGER NOT NULL,
+                FOREIGN KEY (student_id)
+                    REFERENCES students(id) ON DELETE CASCADE
+            )
+        """)
 
+def add_password_column():
+    with get_connection() as connection:
+        columns = {
+            row["name"]
+            for row in connection.execute("PRAGMA table_info(students)")
+        }
 
-if __name__ == "__main__":
-    initialize_database()
-    print("Database initialized successfully.")
+        if "password_hash" not in columns:
+            connection.execute(
+                "ALTER TABLE students ADD COLUMN password_hash TEXT"
+            )
+    if __name__ == "__main__":
+        initialize_database()
+        add_password_column()
+        print("Database initialized successfully.")

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function GroupMembership({ session, onUpdated }) {
+function GroupMembership({ session, token, onUpdated }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
@@ -18,8 +18,9 @@ function GroupMembership({ session, onUpdated }) {
         `http://127.0.0.1:8000/sessions/${session.id}/${action}`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ student_id: 1 }),
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
@@ -29,9 +30,14 @@ function GroupMembership({ session, onUpdated }) {
         throw new Error(result.detail || "Could not update membership.");
       }
 
-      const updatedResponse = await fetch(
-        "http://127.0.0.1:8000/sessions?student_id=1"
-      );
+     const updatedResponse = await fetch(
+     "http://127.0.0.1:8000/sessions",
+     {
+     headers: {
+      Authorization: `Bearer ${token}`,
+             },
+        }
+    );
 
       if (!updatedResponse.ok) {
         throw new Error("Membership saved. Refresh to see the update.");

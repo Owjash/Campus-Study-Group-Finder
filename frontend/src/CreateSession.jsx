@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function CreateSession({ onCreated }) {
+function CreateSession({ token,onCreated }) {
   const [course, setCourse] = useState("");
   const [topic, setTopic] = useState("");
   const [location, setLocation] = useState("");
@@ -18,7 +18,10 @@ function CreateSession({ onCreated }) {
         "http://127.0.0.1:8000/sessions",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
           body: JSON.stringify({
             course: course.trim(),
             topic: topic.trim(),
